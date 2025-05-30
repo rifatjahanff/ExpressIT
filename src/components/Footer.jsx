@@ -8,7 +8,9 @@ import {
   FaTwitterSquare,
   FaInstagramSquare,
 } from "react-icons/fa";
-import { IoMdMail } from "react-icons/io";
+import { Link } from "react-router-dom";
+
+import Contact from "./About";
 
 const Footer = () => {
   return (
@@ -34,21 +36,28 @@ const Footer = () => {
               as={"p"}
               className={"text-[30px] text-white hover:text-pink-600"}
             />
+            <Link to="/productPage">
             <Heading
               text={"New Arrivals"}
               as={"p"}
               className={"text-[20px] text-white hover:text-pink-600"}
             />
+            </Link>
+            <Link to="/about">
             <Heading
               text={"About Us"}
               as={"p"}
               className={"text-[20px] text-white hover:text-pink-600"}
             />
+            </Link>
+            
+           <Link to="/contact">
             <Heading
               text={"Contact"}
               as={"p"}
               className={"text-[20px] text-white hover:text-pink-600"}
             />
+            </Link>
            </div>
            <div className="w-[22%]">
              
