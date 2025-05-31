@@ -10,147 +10,61 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-import Contact from "./About";
-
 const Footer = () => {
   return (
-    <div className="h-[350px] md:h-[250px] bg-black rounded-t-2xl border-2 border-gray-800">
+    <footer className="bg-black rounded-t-2xl border-t-2 border-gray-800 text-white">
       <Container>
-       
-          {/* Left Section */}
-          <div className="flex  md:items-start justify-around mt-[50px]">
-           <div className="w-[32%]">
-             <div className="w-[250px] h-[100px]">
-              <img src={Logo} alt="Logo" className="w-full" />
-            </div>
-            <Heading
-              text={"আমাদের কালেকশন আপনাকে দেবে ফ্যাশনের আধুনিকতা এবং ঐতিহ্যের একটি নিখুঁত সংমিশ্রণ।"}
-              as={"p"}
-              className={"text-[15px] text-white hover:text-pink-600 pr-[50px]"}
-            />
-           </div>
-           <div className="w-[22%]">
-             
-            <Heading
-              text={"Explore More"}
-              as={"p"}
-              className={"text-[30px] text-white hover:text-pink-600"}
-            />
-            <Link to="/productPage">
-            <Heading
-              text={"New Arrivals"}
-              as={"p"}
-              className={"text-[20px] text-white hover:text-pink-600"}
-            />
-            </Link>
-            <Link to="/about">
-            <Heading
-              text={"About Us"}
-              as={"p"}
-              className={"text-[20px] text-white hover:text-pink-600"}
-            />
-            </Link>
-            
-           <Link to="/contact">
-            <Heading
-              text={"Contact"}
-              as={"p"}
-              className={"text-[20px] text-white hover:text-pink-600"}
-            />
-            </Link>
-           </div>
-           <div className="w-[22%]">
-             
-            <Heading
-              text={"Client Experience"}
-              as={"p"}
-              className={"text-[30px] text-white hover:text-pink-600"}
-            />
-            <Heading
-              text={"Track Your Order"}
-              as={"p"}
-              className={"text-[20px] text-white hover:text-pink-600"}
-            />
-            <Heading
-              text={"Returns & Exchanges"}
-              as={"p"}
-              className={"text-[20px] text-white hover:text-pink-600"}
-            />
-            <Heading
-              text={"Customer Reviews"}
-              as={"p"}
-              className={"text-[20px] text-white hover:text-pink-600"}
-            />
-            <Heading
-              text={"Privacy Policy"}
-              as={"p"}
-              className={"text-[20px] text-white hover:text-pink-600"}
-            />
-            <Heading
-              text={"FAQ"}
-              as={"p"}
-              className={"text-[20px] text-white hover:text-pink-600"}
-            />
-           </div>
-            <div className="w-[22%]">
-             
-            <Heading
-              text={"GET IN TOUCH"}
-              as={"p"}
-              className={"text-[30px] text-white hover:text-pink-600"}
-            />
-            <Heading
-              text={"মোবাইল নং: (+88) 01855-375963"}
-              as={"p"}
-              className={"text-[20px] text-white hover:text-pink-600"}
-            />
-            <Heading
-              text={"ইমেইল: hello@glorebd.com"}
-              as={"p"}
-              className={"text-[20px] text-white hover:text-pink-600"}
-            />
-           
-             <div className=" flex gap-6 text-[30px] mt-[30px] ml-[30px]">
-                 <a
-                href="https://www.facebook.com/rifat.jahan.730669"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaFacebookSquare className="hover:bg-white bg-white text-black hover:text-pink-600 cursor-pointer " />
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/rifat-jahan-63215b34a/" 
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaLinkedin className="hover:bg-white bg-white text-black  hover:text-pink-600 cursor-pointer" />
-              </a>
-              <a
-                href="https://x.com/RifatJahanRume" 
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTwitterSquare className="hover:bg-white bg-white text-black  hover:text-pink-600 cursor-pointer" />
-              </a>
-              <a
-                href="https://www.instagram.com/jahanrifat9531/" 
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaInstagramSquare className="hover:bg-white bg-white text-black  hover:text-pink-600 cursor-pointer" />
-              </a>
-             </div>
-            
-            
-           </div>
-            
+        <div className="flex flex-wrap justify-between gap-10 py-10">
+          {/* Logo & Description */}
+          <div className="w-full md:w-[45%] lg:w-[32%] space-y-4">
+            <img src={Logo} alt="Glore Logo" className="w-[250px]" />
+            <p className="text-[15px] pr-6 hover:text-pink-600">
+              আমাদের কালেকশন আপনাকে দেবে ফ্যাশনের আধুনিকতা এবং ঐতিহ্যের একটি নিখুঁত সংমিশ্রণ।
+            </p>
           </div>
 
-          
-       
+          {/* Explore More */}
+          <div className="w-[45%] md:w-[22%] space-y-2">
+            <Heading text="Explore More" as="p" className="text-[30px] hover:text-pink-600" />
+            {["New Arrivals", "About Us", "Contact"].map((item, i) => (
+              <Link key={i} to={`/${item.toLowerCase().replace(/\s+/g, "")}`}>
+                <Heading text={item} as="p" className="text-[20px] hover:text-pink-600" />
+              </Link>
+            ))}
+          </div>
+
+          {/* Client Experience */}
+          <div className="w-[45%] md:w-[22%] space-y-2">
+            <Heading text="Client Experience" as="p" className="text-[30px] hover:text-pink-600" />
+            {["Track Your Order", "Returns & Exchanges", "Customer Reviews", "Privacy Policy", "FAQ"].map((item, i) => (
+              <Heading key={i} text={item} as="p" className="text-[20px] hover:text-pink-600" />
+            ))}
+          </div>
+
+          {/* Contact & Social */}
+          <div className="w-[45%] md:w-[22%] space-y-2">
+            <Heading text="GET IN TOUCH" as="p" className="text-[30px] hover:text-pink-600" />
+            <Heading text="মোবাইল নং: (+88) 01855-375963" as="p" className="text-[20px] hover:text-pink-600" />
+            <Heading text="ইমেইল: hello@glorebd.com" as="p" className="text-[20px] hover:text-pink-600" />
+
+            <div className="flex gap-4 text-[28px] pt-4">
+              <a href="https://www.facebook.com/rifat.jahan.730669" aria-label="Facebook" title="Facebook" target="_blank" rel="noopener noreferrer">
+                <FaFacebookSquare className="text-black bg-white rounded hover:text-pink-600" />
+              </a>
+              <a href="https://www.linkedin.com/in/rifat-jahan-63215b34a/" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <FaLinkedin className="text-black bg-white rounded hover:text-pink-600" />
+              </a>
+              <a href="https://x.com/RifatJahanRume" aria-label="Twitter" title="Twitter" target="_blank" rel="noopener noreferrer">
+                <FaTwitterSquare className="text-black bg-white rounded hover:text-pink-600" />
+              </a>
+              <a href="https://www.instagram.com/jahanrifat9531/" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener noreferrer">
+                <FaInstagramSquare className="text-black bg-white rounded hover:text-pink-600" />
+              </a>
+            </div>
+          </div>
+        </div>
       </Container>
-    </div>
+    </footer>
   );
 };
 

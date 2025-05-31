@@ -8,7 +8,6 @@ import ProductCard from "../components/ProductCard";
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-
   const [selectedSubCategories, setSelectedSubCategories] = useState([]);
   const [sortOrder, setSortOrder] = useState("");
 
@@ -95,14 +94,16 @@ const ProductPage = () => {
   };
 
   const minPercent =
-    ((priceFilter.min - minPriceAllowed) / (maxPriceAllowed - minPriceAllowed)) *
+    ((priceFilter.min - minPriceAllowed) /
+      (maxPriceAllowed - minPriceAllowed)) *
     100;
   const maxPercent =
-    ((priceFilter.max - minPriceAllowed) / (maxPriceAllowed - minPriceAllowed)) *
+    ((priceFilter.max - minPriceAllowed) /
+      (maxPriceAllowed - minPriceAllowed)) *
     100;
 
   return (
-    <div className="container mx-auto px-4 py-6 flex flex-col md:flex-row gap-6 ">
+    <div className="container mx-auto px-4 py-6 flex flex-col md:flex-row gap-6">
       {/* Sidebar */}
       <aside className="w-full md:w-[300px] max-h-[48vh] overflow-y-auto bg-pink-200 p-4 rounded shadow space-y-6 flex-shrink-0">
         {/* Subcategory Filter */}
@@ -143,7 +144,6 @@ const ProductPage = () => {
         {/* Price Filter */}
         <div>
           <h2 className="text-lg font-semibold mb-3">Filter by Price</h2>
-
           <div className="relative h-6 mb-4">
             <div
               className="absolute top-3 h-1 bg-blue-500 rounded"

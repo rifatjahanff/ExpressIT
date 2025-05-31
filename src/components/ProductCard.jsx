@@ -7,40 +7,51 @@ const ProductCard = ({ product }) => {
   const navigate = useNavigate();
 
   const imageUrl =
-    product.images && product.images.length > 0
-      ? product.images[0].secure_url
-      : "https://via.placeholder.com/400x300?text=No+Image";
+    product.images?.[0]?.secure_url ||
+    "https://via.placeholder.com/400x300?text=No+Image";
 
   const handleImageClick = () => {
     navigate(`/product/${product._id}`);
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md flex flex-col h-[650px]">
+    <div className="bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300 flex flex-col h-[600px]">
+      {/* Image */}
       <div
-        className="flex-grow overflow-hidden rounded-md mb-3 cursor-pointer"
+        className="h-[300px] overflow-hidden rounded-t-xl cursor-pointer"
         onClick={handleImageClick}
       >
         <img
           src={imageUrl}
           alt={product.name}
-          className="w-full h-full object-cover object-top rounded-md transform transition-transform duration-300 hover:scale-110"
+          loading="lazy"
+          className="w-full h-full object-cover object-top transform transition-transform duration-300 hover:scale-105"
         />
-
       </div>
 
-      <div className="p-4">
-        <h2 className="text-lg font-semibold">{product.name}</h2>
-        <p className="text-sm text-gray-600 mb-2">{product.description}</p>
+      {/* Info */}
+      <div className="flex flex-col p-4 flex-grow">
+        <h2
+          className="text-lg font-semibold truncate"
+          title={product.name}
+        >
+          {product.name}
+        </h2>
+        <p className="text-sm text-gray-600 line-clamp-2 my-2">
+          {product.description}
+        </p>
 
-        <div className="flex items-center justify-between mt-auto">
+        <div className="flex justify-between items-center mt-auto">
           <button
             onClick={() => addToCart(product)}
-            className="bg-pink-600 text-white py-1.5 px-3 rounded hover:bg-blue-600 transition text-sm"
+            className="bg-pink-600 hover:bg-blue-600 text-white py-1.5 px-4 rounded-md text-sm transition"
+            aria-label={`Add ${product.name} to cart`}
           >
             Add to Cart
           </button>
-          <p className="text-blue-700 font-extrabold text-xl">৳ {product.price}</p>
+          <span className="text-blue-700 font-bold text-lg">
+            ৳ {product.price}
+          </span>
         </div>
       </div>
     </div>

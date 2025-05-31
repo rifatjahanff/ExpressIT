@@ -14,42 +14,42 @@ function Checkout() {
   };
 
   return (
-    <div className="max-w-[1520px] mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div className="max-w-[1520px] mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
       {/* Left: Cart Items */}
       <div className="bg-white p-6 rounded shadow">
-        <h2 className="text-2xl font-bold mb-6">Your Order</h2>
+        <h2 className="text-2xl font-bold mb-6">🛒 আপনার অর্ডার</h2>
         {cartItems.length === 0 ? (
-          <p className="text-gray-600">Your cart is empty.</p>
+          <p className="text-gray-600">আপনার কার্ট খালি।</p>
         ) : (
           <ul className="space-y-0">
             {cartItems.map((item, idx) => (
               <li
                 key={item._id}
-                className={`flex items-center justify-between py-3 ${idx !== cartItems.length - 1 ? "border-b border-gray-300" : ""
+                className={`flex flex-col sm:flex-row justify-between gap-4 py-4 ${idx !== cartItems.length - 1 ? "border-b border-gray-300" : ""
                   }`}
               >
-                <div className="flex items-center gap-4 flex-1">
+                <div className="flex gap-4 flex-1">
                   <img
                     src={item.image || "https://via.placeholder.com/150"}
                     alt={item.name}
-                    className="w-32 h-32 object-cover object-top"
+                    className="w-28 h-28 sm:w-32 sm:h-32 object-cover rounded"
                   />
-                  <div className="flex flex-col">
+                  <div className="flex flex-col justify-between">
                     <h3 className="font-semibold text-lg">{item.name}</h3>
-                    <div className="flex items-center gap-4 mt-1 text-lg font-semibold">
-                      <div>৳ {item.price}</div>
-                      <div className="select-none">×</div>
+                    <div className="flex items-center gap-2 mt-2 text-base">
+                      <span className="font-medium">৳ {item.price}</span>
+                      <span>×</span>
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => handleQuantityChange(item._id, item.quantity - 1)}
-                          className="px-2 py-1 bg-gray-300 rounded hover:bg-gray-400"
+                          className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
                         >
-                          -
+                          −
                         </button>
                         <span className="min-w-[24px] text-center">{item.quantity}</span>
                         <button
                           onClick={() => handleQuantityChange(item._id, item.quantity + 1)}
-                          className="px-2 py-1 bg-gray-300 rounded hover:bg-gray-400"
+                          className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
                         >
                           +
                         </button>
@@ -57,13 +57,13 @@ function Checkout() {
                     </div>
                   </div>
                 </div>
-                <div className="font-bold text-blue-700 text-xl">
+                <div className="text-right font-bold text-blue-700 text-xl sm:text-lg">
                   ৳ {item.price * item.quantity}
                 </div>
               </li>
             ))}
-            <div className="text-right font-semibold text-2xl mt-6 border-t pt-4">
-              = ৳ {subtotal.toFixed(2)}
+            <div className="text-right font-bold text-xl mt-6 border-t pt-4">
+              মোট: ৳ {subtotal.toFixed(2)}
             </div>
           </ul>
         )}
@@ -71,61 +71,61 @@ function Checkout() {
 
       {/* Right: Delivery Information Form */}
       <div className="bg-white p-6 rounded shadow space-y-6">
-        <h2 className="text-2xl font-bold mb-2">DELIVERY INFORMATION</h2>
-        <p className="text-gray-700 mb-4">
-          অর্ডার কনফার্ম করতে আপনার নাম, ঠিকানা, মোবাইল নাম্বার লিখে অর্ডার কনফার্ম করুন।
+        <h2 className="text-2xl font-bold">🚚 ডেলিভারি তথ্য</h2>
+        <p className="text-gray-700">
+          অর্ডার নিশ্চিত করতে আপনার তথ্য দিন।
         </p>
 
         <form className="space-y-4">
           <div>
-            <label className="block mb-1 font-semibold" htmlFor="name">
-              আপনার নাম<span className="text-red-600">*</span>
+            <label htmlFor="name" className="block font-semibold mb-1">
+              আপনার নাম<span className="text-red-500">*</span>
             </label>
             <input
               type="text"
               id="name"
-              placeholder="Enter Full Name"
-              className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-gray-300 p-2 rounded focus:ring-2 focus:ring-blue-500"
+              placeholder="আপনার পুরো নাম লিখুন"
               required
             />
           </div>
 
           <div>
-            <label className="block mb-1 font-semibold" htmlFor="phone">
-              আপনার ফোন নাম্বার<span className="text-red-600">*</span>
+            <label htmlFor="phone" className="block font-semibold mb-1">
+              মোবাইল নাম্বার<span className="text-red-500">*</span>
             </label>
             <input
               type="tel"
               id="phone"
-              placeholder="Enter Contact Number"
-              className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-gray-300 p-2 rounded focus:ring-2 focus:ring-blue-500"
+              placeholder="০১XXXXXXXXX"
               required
             />
           </div>
 
           <div>
-            <label className="block mb-1 font-semibold" htmlFor="address">
-              আপনার ডেলিভারি ঠিকানা দিন<span className="text-red-600">*</span>
+            <label htmlFor="address" className="block font-semibold mb-1">
+              ডেলিভারি ঠিকানা<span className="text-red-500">*</span>
             </label>
             <textarea
               id="address"
+              className="w-full border border-gray-300 p-2 rounded focus:ring-2 focus:ring-blue-500"
               rows="3"
-              placeholder="Enter Delivery Address"
-              className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="আপনার সম্পূর্ণ ঠিকানা লিখুন"
               required
-            />
+            ></textarea>
           </div>
 
           <div>
-            <label className="block mb-1 font-semibold" htmlFor="area">
-              ডেলিভারি এলাকা<span className="text-red-600">*</span>
+            <label htmlFor="area" className="block font-semibold mb-1">
+              এলাকা নির্বাচন করুন<span className="text-red-500">*</span>
             </label>
             <select
               id="area"
-              className="w-full border border-gray-300 rounded p-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-gray-300 p-2 rounded bg-white focus:ring-2 focus:ring-blue-500"
               required
             >
-              <option value="">Select Delivery Area</option>
+              <option value="">-- এলাকা নির্বাচন করুন --</option>
               <option value="dhaka">ঢাকা</option>
               <option value="chittagong">চট্টগ্রাম</option>
               <option value="rajshahi">রাজশাহী</option>
@@ -133,39 +133,39 @@ function Checkout() {
           </div>
 
           <div>
-            <label className="block mb-1 font-semibold" htmlFor="note">
-              গ্রাহক নোট <span className="text-gray-500">(optional)</span>
+            <label htmlFor="note" className="block font-semibold mb-1">
+              অতিরিক্ত নোট <span className="text-gray-400">(ঐচ্ছিক)</span>
             </label>
             <textarea
               id="note"
+              className="w-full border border-gray-300 p-2 rounded focus:ring-2 focus:ring-blue-500"
               rows="2"
-              placeholder="Enter Your Note"
-              className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+              placeholder="আপনার বিশেষ অনুরোধ বা মন্তব্য"
+            ></textarea>
           </div>
 
           <div>
-            <p className="font-semibold mb-2">Payment Method</p>
-            <label className="inline-flex items-center gap-2 cursor-pointer">
+            <p className="font-semibold mb-2">পেমেন্ট মেথড</p>
+            <label className="inline-flex items-center gap-2">
               <input
                 type="radio"
                 name="payment"
                 value="cod"
                 defaultChecked
-                className="form-radio"
+                className="form-radio text-blue-600"
               />
-              Cash on Delivery
+              ক্যাশ অন ডেলিভারি
             </label>
           </div>
 
           <div className="border-t pt-4 space-y-2">
-            <h3 className="text-xl font-bold">CART TOTALS</h3>
+            <h3 className="text-xl font-bold">মোট মূল্য</h3>
             <div className="flex justify-between font-semibold">
               <span>Subtotal</span>
               <span>৳ {subtotal.toFixed(2)}</span>
             </div>
             <div className="flex justify-between font-semibold">
-              <span>Delivery Charge</span>
+              <span>Delivery</span>
               <span>৳ 0.00</span>
             </div>
             <div className="flex justify-between font-bold text-lg border-t pt-2">
@@ -176,13 +176,12 @@ function Checkout() {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 font-semibold"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded font-bold transition"
           >
-            অর্ডারটি নিশ্চিত করুন
+            ✅ অর্ডার নিশ্চিত করুন
           </button>
         </form>
       </div>
-
     </div>
   );
 }

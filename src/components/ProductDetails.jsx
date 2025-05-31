@@ -63,20 +63,20 @@ const ProductDetails = () => {
   return (
     <div>
       <Navbar />
-      <div className="max-w-[1520px] mx-auto p-6">
-        <div className="flex flex-col md:flex-row gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="flex flex-col lg:flex-row gap-8">
           {/* Image Section */}
-          <div className="md:flex-1 min-h-[600px]">
+          <div className="lg:w-1/2 w-full">
             <img
               src={imageUrl}
               alt={product.name}
-              className="w-full h-full object-cover"
+              className="w-full max-h-[600px] object-cover rounded-lg"
             />
           </div>
 
-          {/* Details Section (Sticky) */}
-          <div className="md:flex-1 sticky top-0 self-start max-h-screen overflow-auto p-6">
-            <h1 className="text-4xl font-bold mb-4">{product.name}</h1>
+          {/* Details Section */}
+          <div className="lg:w-1/2 w-full sticky top-4 self-start p-4 bg-white rounded-lg shadow">
+            <h1 className="text-2xl sm:text-3xl font-bold mb-4">{product.name}</h1>
 
             {/* Rating */}
             <div className="flex items-center mb-4">
@@ -84,8 +84,7 @@ const ProductDetails = () => {
                 {[...Array(5)].map((_, i) => (
                   <svg
                     key={i}
-                    className={`w-5 h-5 ${i < Math.floor(rating) ? "fill-current" : "stroke-current"
-                      }`}
+                    className={`w-5 h-5 ${i < Math.floor(rating) ? "fill-current" : "stroke-current"}`}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill={i < Math.floor(rating) ? "currentColor" : "none"}
@@ -100,12 +99,12 @@ const ProductDetails = () => {
             </div>
 
             {/* Price */}
-            <p className="text-3xl font-extrabold text-blue-700 mb-4">
+            <p className="text-2xl sm:text-3xl font-extrabold text-blue-700 mb-4">
               ৳ {product.price}
             </p>
 
             {/* Category */}
-            <p className="text-gray-600 italic mb-6">
+            <p className="text-gray-600 italic mb-6 text-sm sm:text-base">
               ক্যাটাগরি: {product.category?.name || "N/A"}
             </p>
 
@@ -129,12 +128,11 @@ const ProductDetails = () => {
             {/* Description toggle */}
             <button
               onClick={() => setDescOpen(!descOpen)}
-              className="flex items-center text-blue-600 font-semibold mb-4 hover:underline focus:outline-none"
+              className="flex items-center text-blue-600 font-semibold mb-4 hover:underline"
             >
               <span className="mr-2">Description</span>
               <svg
-                className={`w-5 h-5 transform transition-transform duration-300 ${descOpen ? "rotate-180" : ""
-                  }`}
+                className={`w-5 h-5 transform transition-transform duration-300 ${descOpen ? "rotate-180" : ""}`}
                 fill="none"
                 stroke="currentColor"
                 strokeWidth={2}
@@ -146,7 +144,7 @@ const ProductDetails = () => {
             </button>
 
             {descOpen && (
-              <p className="text-gray-700 leading-relaxed whitespace-pre-line mb-6 border-l-4 border-blue-600 pl-4">
+              <p className="text-gray-700 leading-relaxed whitespace-pre-line mb-6 border-l-4 border-blue-600 pl-4 text-sm sm:text-base">
                 {product.description}
                 <br />
                 ডেলিভারি ম্যান থেকে প্রোডাক্ট দেখে নিতে পারবেন যদি প্রোডাক্ট পছন্দ না হয় তাহলে ডেলিভারি চার্জ দিয়ে রিটার্ন করে দিতে পারবেন
@@ -156,67 +154,38 @@ const ProductDetails = () => {
             {/* Order Button */}
             <button
               onClick={handleAddToCart}
-              className="bg-blue-600 text-white py-4 rounded hover:bg-blue-700 transition w-full text-lg font-semibold mb-2"
+              className="bg-blue-600 text-white py-3 sm:py-4 rounded hover:bg-blue-700 transition w-full text-base sm:text-lg font-semibold mb-4"
             >
               অর্ডার করুন
             </button>
 
             {/* Info with icons */}
-            <div className="text-gray-700 text-sm space-y-3 mt-6">
-              <p className="flex items-center gap-3 text-blue-700 font-semibold text-base">
-                <FaCheckCircle className="w-6 h-6" />
-                100% Original Product.
-              </p>
-              <p className="flex items-center gap-3 text-blue-700 font-semibold text-base">
-                <FaCheckCircle className="w-6 h-6" />
-                Express Shipping
-              </p>
-              <p className="flex items-center gap-3 text-blue-700 font-semibold text-base">
-                <FaCheckCircle className="w-6 h-6" />
-                Cash on Delivery Available
-              </p>
-              <p className="flex items-center gap-3 text-blue-700 font-semibold text-base">
-                <FaCheckCircle className="w-6 h-6" />
-                Easy return and exchange policy within 3 days
-              </p>
+            <div className="text-gray-700 text-sm space-y-3">
+              {[
+                "100% Original Product.",
+                "Express Shipping",
+                "Cash on Delivery Available",
+                "Easy return and exchange policy within 3 days",
+              ].map((text, i) => (
+                <p key={i} className="flex items-center gap-3 text-blue-700 font-semibold text-base">
+                  <FaCheckCircle className="w-5 h-5" />
+                  {text}
+                </p>
+              ))}
             </div>
 
             {/* Social Icons */}
             <div className="flex space-x-6 mt-6">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noreferrer"
-                className="text-blue-600 hover:text-blue-800"
-                aria-label="Facebook"
-              >
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook" className="text-blue-600 hover:text-blue-800">
                 <FaFacebookF size={24} />
               </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noreferrer"
-                className="text-blue-400 hover:text-blue-600"
-                aria-label="Twitter"
-              >
+              <a href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter" className="text-blue-400 hover:text-blue-600">
                 <FaTwitter size={24} />
               </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                className="text-pink-600 hover:text-pink-800"
-                aria-label="Instagram"
-              >
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="text-pink-600 hover:text-pink-800">
                 <FaInstagram size={24} />
               </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="text-blue-700 hover:text-blue-900"
-                aria-label="LinkedIn"
-              >
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-blue-700 hover:text-blue-900">
                 <FaLinkedinIn size={24} />
               </a>
             </div>
@@ -225,7 +194,7 @@ const ProductDetails = () => {
 
         {/* Related Products */}
         {relatedProducts.length > 0 && (
-          <div className="mt-12 max-w-[1520] mx-auto">
+          <div className="mt-12">
             <h3 className="text-2xl font-bold mb-6">RELATED PRODUCTS</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {relatedProducts.map((prod) => (
