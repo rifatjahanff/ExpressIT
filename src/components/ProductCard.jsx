@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300 flex flex-col h-[600px]">
+    <div className="bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300 flex flex-col h-[400px]">
       {/* Image */}
       <div
         className="h-[300px] overflow-hidden rounded-t-xl cursor-pointer"
