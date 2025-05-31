@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <footer className="bg-black rounded-t-2xl border-t-2 border-gray-800 text-white">
       <Container>
-        <div className="flex flex-wrap justify-between gap-10 py-10">
+        <div className="flex flex-wrap justify-between py-10 mt-[50px]">
           {/* Logo & Description */}
           <div className="w-full md:w-[45%] lg:w-[32%] space-y-4">
             <img src={Logo} alt="Glore Logo" className="w-[250px]" />
@@ -24,7 +24,7 @@ const Footer = () => {
           </div>
 
           {/* Explore More */}
-          <div className="w-[45%] md:w-[22%] space-y-2">
+          <div className="w-[33%] md:w-[22%] space-y-2">
             <Heading text="Explore More" as="p" className="text-[30px] hover:text-pink-600" />
             {["New Arrivals", "About Us", "Contact"].map((item, i) => (
               <Link key={i} to={`/${item.toLowerCase().replace(/\s+/g, "")}`}>
@@ -34,7 +34,7 @@ const Footer = () => {
           </div>
 
           {/* Client Experience */}
-          <div className="w-[45%] md:w-[22%] space-y-2">
+          <div className="w-[33%] md:w-[22%] space-y-2">
             <Heading text="Client Experience" as="p" className="text-[30px] hover:text-pink-600" />
             {["Track Your Order", "Returns & Exchanges", "Customer Reviews", "Privacy Policy", "FAQ"].map((item, i) => (
               <Heading key={i} text={item} as="p" className="text-[20px] hover:text-pink-600" />
@@ -42,7 +42,7 @@ const Footer = () => {
           </div>
 
           {/* Contact & Social */}
-          <div className="w-[45%] md:w-[22%] space-y-2">
+          <div className="w-[33%] md:w-[22%] space-y-2">
             <Heading text="GET IN TOUCH" as="p" className="text-[30px] hover:text-pink-600" />
             <Heading text="মোবাইল নং: (+88) 01855-375963" as="p" className="text-[20px] hover:text-pink-600" />
             <Heading text="ইমেইল: hello@glorebd.com" as="p" className="text-[20px] hover:text-pink-600" />
